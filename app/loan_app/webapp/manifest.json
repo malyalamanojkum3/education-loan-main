@@ -1,0 +1,192 @@
+{
+  "_version": "1.65.0",
+  "sap.app": {
+    "id": "loanapp",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.17.5",
+      "toolsId": "f5209bc3-40a6-41d2-8924-ab48eb813631"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/odata/v4/my/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "odataVersion": "4.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.136.1",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "loanapp.i18n.i18n"
+        }
+      },
+      "mainModel": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "transition": "slide",
+        "type": "View",
+        "viewType": "XML",
+        "path": "loanapp.view",
+        "async": true,
+        "viewPath": "loanapp.view"
+      },
+      "routes": [
+        {
+          "name": "Routemain",
+          "pattern": "",
+          "target": [
+            "Targetmain"
+          ]
+        },
+        {
+          "name": "main",
+          "pattern": "main",
+          "target": [
+            "Targetmain"
+          ]
+        },
+        {
+          "name": "dashboard",
+          "pattern": "dashboard",
+          "target": [
+            "Targetdashboard"
+          ]
+        },
+        {
+          "name": "LoanStatusPage",
+          "pattern": "LoanStatusPage",
+          "target": [
+            "TargetLoanStatusPage"
+          ]
+        },
+        {
+          "name": "RouteloanApplication",
+          "pattern": "loanApplication",
+          "target": [
+            "TargetloanApplication"
+          ]
+        },
+        {
+          "name": "LoanStatusDetails",
+          "pattern": "LoanStatusDetails/{customerId}",
+          "target": [
+            "TargetLoanStatusDetails"
+          ]
+        },
+        {
+          "name": "AdminAppliedLoans",
+          "pattern":"AdminAppliedLoans",
+          "target":[
+            "TargetAdminAppliedLoans"
+          ]
+        },
+        {
+          "name": "Profile",
+          "pattern": "Profile",
+          "target": [
+            "TargetProfile"
+          ]
+        }
+       
+      ],
+      "targets": {
+        "Targetmain": {
+          "id": "main",
+          "name": "main"
+        },
+        "Targetdashboard": {
+          "id": "dashboard",
+          "name": "dashboard"
+        },
+        "TargetLoanStatusPage": {
+          "id": "LoanStatusPage",
+          "name": "LoanStatusPage"
+        },
+        "TargetLoanStatusDetails": {
+          "id": "LoanStatusDetails",
+          "name": "LoanStatusDetails"
+        },
+        "TargetloanApplication": {
+          "id": "loanApplication",
+          "name": "loanApplication"
+        },
+        
+        "TargetAdminAppliedLoans": {
+          "id":"AdminAppliedLoans",
+          "name":"AdminAppliedLoans"
+        },
+        "TargetProfile":{
+          "id": "profile",
+          "name": "profile"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "loanapp.view.App",
+      "type": "XML",
+      "id": "App",
+      "async": true
+    }
+  }
+}
